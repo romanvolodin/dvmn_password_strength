@@ -33,17 +33,6 @@ def doesnt_consist_of_symbols(password):
     return any(char.isalnum() for char in password)
 
 
-password_checks = [
-    is_very_long,
-    has_digit,
-    has_letters,
-    has_upper_letters,
-    has_lower_letters,
-    has_symbols,
-    doesnt_consist_of_symbols,
-]
-
-
 def check_password(_, password):
     score = 0
     for check in password_checks:
@@ -58,6 +47,16 @@ def exit_on_esc(key):
 
 
 if __name__ == "__main__":
+    password_checks = [
+        is_very_long,
+        has_digit,
+        has_letters,
+        has_upper_letters,
+        has_lower_letters,
+        has_symbols,
+        doesnt_consist_of_symbols,
+    ]
+
     password = urwid.Edit("Введите пароль: ", mask='*')
     reply = urwid.Text("Рейтинг этого пароля: 0")
     exit_text = urwid.Text("\nНажмите ESC для выхода")
